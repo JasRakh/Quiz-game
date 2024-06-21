@@ -3,6 +3,7 @@ import { data } from '../../assets/data.js'
 import { useEffect, useState , useRef} from "react";
 import { Button } from "@mui/material";
 
+
 const Quiz = () => {
     let [index, setIndex] = useState(0);
     let [question, setQuestion] = useState(data[index]);
@@ -87,11 +88,12 @@ const Quiz = () => {
             <p className="quiz__timer roboto-regular">Таймер: {format(time)}</p>
             {result ?
                 <>
-                    <h2 className="roboto-regular">Вы нашли {score} ответа из {data.length} вопросов</h2>
+                    <h2 className="roboto-regular">Вы нашли {score}/{data.length} вопросов</h2>
                     <Button variant="contained" type="submit" onClick={reset}>Заново</Button>
                 </> :
                 <>
                     <h3 className="quiz__question roboto-regular">{index + 1}. {question.question}</h3>
+                    {question.src && <img src={question.src} alt={`Question ${index + 1}`} className="quiz__image" />}
                     <ul className="quiz__option">
                         {question.option.map((item, i) => (
                             <li className="quiz__option-item roboto-regular"

@@ -14,7 +14,7 @@ const Auth = () => {
             nicknames.push(nickname);
             localStorage.setItem('nicknames', JSON.stringify(nicknames));
             setShowQuiz(true);
-        }else{
+        }else {
             alert("Вы должны ввести свой ник!!!")
         }
     }
