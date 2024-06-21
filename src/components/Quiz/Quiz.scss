@@ -1,7 +1,51 @@
 .quiz{
+  width: 450px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 20px;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  &__title{
+    font-size: 30px;
+  }
+  &__timer{
+    font-size: 20px;
+  }
+  hr{
+    height: 1px;
+    border: none;
+    background-color: #333333;
+  }
+  &__option{
+    &-item{
+      display: flex;
+      align-items: center;
+      height: 40px;
+      padding-left: 15px;
+      border: 1px solid #333333;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      cursor: pointer;
+
+    }
+  }
+  .index{
+    font-size: 13px;
+    text-align: center;
+  }
+  .correct{
+    background-color:#dffff2 ;
+    border-color: #00d397;
+  }
+  .wrong{
+    background-color:#ffebeb ;
+    border-color: #ff4a4a;
+  }
 }
+

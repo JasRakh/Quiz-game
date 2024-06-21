@@ -3,7 +3,7 @@ import Auth from "./components/Auth/index.js";
 function App() {
   return (
     <div>
-        <Auth />
+       <Auth />
     </div>
   )
 }
