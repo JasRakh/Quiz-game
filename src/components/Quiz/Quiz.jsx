@@ -3,8 +3,7 @@ import { data } from '../../assets/data.js'
 import { useEffect, useState , useRef} from "react";
 import { Button } from "@mui/material";
 
-
-const Quiz = () => {
+const Quiz = ({nickname}) => {
     let [index, setIndex] = useState(0);
     let [question, setQuestion] = useState(data[index]);
     let [lock, setLock] = useState(false);
@@ -15,7 +14,16 @@ const Quiz = () => {
     const [running, setRunning] = useState(true)
 
     const timeHandler = useRef();
-
+    const saveResult = () => {
+        const results = JSON.parse(localStorage.getItem('results')) || [];
+        const newResult = {
+            nickname : nickname,
+            score,
+            time,
+        }
+        results.push(newResult);
+        localStorage.setItem('results', JSON.stringify(results));
+    };
     useEffect(() => {
         if(running){
             timeHandler.current = setInterval(() => {
@@ -47,11 +55,13 @@ const Quiz = () => {
             }else{
                 setResult(true)
                 setRunning(!running)
+                saveResult()
             }
         }else{
             alert("Вы должны выбрать ответ!!!")
         }
     };
+
 
     const checkAnswer = (e, ans) => {
         if (!lock) {

@@ -10,19 +10,14 @@ const Auth = () => {
     function handleSubmit(e) {
         e.preventDefault();
         if (nickname) {
-            const nicknames = JSON.parse(localStorage.getItem('nicknames')) || [];
-            nicknames.push(nickname);
-            localStorage.setItem('nicknames', JSON.stringify(nicknames));
             setShowQuiz(true);
-        }else {
+        } else {
             alert("Вы должны ввести свой ник!!!")
         }
     }
-
     if (showQuiz) {
-        return <Quiz />;
+        return <Quiz nickname={nickname}/>;
     }
-
     return (
         <div className="auth">
             <form className="auth__form" onSubmit={handleSubmit}>
