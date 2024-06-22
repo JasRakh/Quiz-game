@@ -23,5 +23,5 @@ Before you begin, ensure you have met the following requirements:
 To start the development server, run the following command:
    ```sh
    npm run dev
-This command starts the Vite development server, which includes hot module replacement for a fast development experience. By default, the server runs on http://localhost:5173.
+
 
