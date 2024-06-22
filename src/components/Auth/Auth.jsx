@@ -1,22 +1,17 @@
-import { useState } from 'react';
+import {  useRef } from 'react';
 import { Button } from '@mui/material';
 import './Auth.scss';
 import Quiz from "../Quiz/index.js";
 
-const Auth = () => {
-    const [nickname, setNickname] = useState('');
-    const [showQuiz, setShowQuiz] = useState(false);
-
-    function handleSubmit(e) {
+const Auth = ({onAuth}) => {
+    const nicknameInput= useRef();
+    const handleSubmit = (e) =>{
         e.preventDefault();
-        if (nickname) {
-            setShowQuiz(true);
-        } else {
-            alert("Вы должны ввести свой ник!!!")
+        if(nicknameInput.current.value){
+            onAuth(nicknameInput.current.value)
+        }else{
+            alert("Введите ник!!!!")
         }
-    }
-    if (showQuiz) {
-        return <Quiz nickname={nickname}/>;
     }
     return (
         <div className="auth">
@@ -25,9 +20,8 @@ const Auth = () => {
                 <input
                     className="roboto-regular auth__input"
                     type="text"
-                    value={nickname}
                     placeholder="Ник:"
-                    onChange={(e) => setNickname(e.target.value)}
+                    ref={nicknameInput}
                 />
                 <Button
                     variant="contained"
